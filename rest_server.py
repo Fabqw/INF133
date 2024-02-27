@@ -18,7 +18,7 @@ estudiantes = [
         "id": 3,
         "nombre": "Pepe",
         "apellido": "Lima",
-        "carrera": "Ingeniería de desarrollo",
+        "carrera": "Ingeniería de software",
     },
 ]
 
@@ -39,8 +39,9 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
-            carreras = [carrera['carrera'] for carrera in estudiantes]            
-            self.wfile.write(json.dumps({"carreras": carreras}).encode('utf-8'))
+            carreras = [carrera['carrera'] for carrera in estudiantes]
+            cnt_carreras = carreras.count('Ingeniería de software')            
+            self.wfile.write(json.dumps({"cnt carreras": cnt_carreras}).encode('utf-8'))
         else:
             self.send_response(404)
             self.send_header('Content-type', 'application/json')
