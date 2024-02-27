@@ -58,11 +58,8 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
-            estudiantes = [estudiante for estudiante in estudiantes]
-            cnt_estudiantes = {}
-            for estudiante in estudiantes:
-                if estudiante != []:
-                    cnt_estudiantes[estudiante] += 1
+            #estudiantes = [estudiante for estudiante in estudiantes]
+            cnt_estudiantes = len(estudiantes)
             self.wfile.write(json.dumps({"estudiantes totales": cnt_estudiantes}).encode('utf-8'))
         else:
             self.send_response(404)
