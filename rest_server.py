@@ -46,7 +46,13 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
             self.send_header('Content-type', 'application/json')
             self.end_headers()
             carreras = [carrera['carrera'] for carrera in estudiantes]
-            cnt_carreras = carreras.count('Ingeniería de software')            
+            # cnt_carreras = carreras.count('Ingeniería de software')
+            cnt_carreras = {}
+            for carrera in carreras:
+                if carrera in cnt_carreras:
+                    cnt_carreras[carrera] += 1
+                else:
+                    cnt_carreras[carrera] = 1            
             self.wfile.write(json.dumps({"alumnos de la carrera ing se soft": cnt_carreras}).encode('utf-8'))
         else:
             self.send_response(404)
