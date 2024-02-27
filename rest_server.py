@@ -53,7 +53,7 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
                     cnt_carreras[carrera] += 1
                 else:
                     cnt_carreras[carrera] = 1            
-            self.wfile.write(json.dumps({"alumnos de la carrera ing se soft": cnt_carreras}).encode('utf-8'))
+            self.wfile.write(json.dumps({"alumnos por carrera": cnt_carreras}).encode('utf-8'))
         else:
             self.send_response(404)
             self.send_header('Content-type', 'application/json')
