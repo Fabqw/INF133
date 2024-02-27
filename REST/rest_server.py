@@ -72,6 +72,9 @@ def run_server(port = 8000):
         server_address = ('', port)
         httpd = HTTPServer(server_address, RESTRequestHandler)
         print(f'Iniciando servidor web en http://localhost:{port}/')
+        print(f'Ir a <a href="http://localhost:{port}/buscar_nombre">buscar_nombre</a>')
+        print(f'Ir a <a href="http://localhost:{port}/contar_carreras">contar_carreras</a>')
+        print(f'Ir a <a href="http://localhost:{port}/total_estudiantes">total_estudiantes</a>')
         httpd.serve_forever()
     except KeyboardInterrupt:
         print('Apagando servidor web')
