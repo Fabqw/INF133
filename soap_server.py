@@ -5,8 +5,9 @@ from pysimplesoap.server import SoapDispatcher, SOAPHandler
 def saludar(nombre):
     return "!Hola, {}¡".format(nombre)
 
-def SumaDosNumeros(num1, num2):
-    return num1+num2
+def sumar(num1, num2):
+    resultado = num1 + num2
+    return "La suma de {} y {} es: {}".format(num1, num2, resultado)
 
 #El que va adespachar el resultado del endpoit
 dispatcher = SoapDispatcher(
@@ -19,17 +20,17 @@ dispatcher = SoapDispatcher(
 )
 
 dispatcher.register_function(
+    "Sumar",
+    sumar,
+    returns={"resultado": str},
+    args={"num1": float, "num2": float},
+)
+
+dispatcher.register_function(
     "Saludar",
     saludar,
     returns={"saludo": str},
     args={"nombre": str},
-)
-
-dispatcher.register_function(
-    "Sumar",
-    SumaDosNumeros,
-    returns={"La suma es": int},
-    args={"primer numero": int, "segundo numero": int},
 )
 
 server = HTTPServer(("0.0.0.0",8000),SOAPHandler)
