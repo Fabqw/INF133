@@ -9,9 +9,10 @@ def sumar(num1, num2):
     resultado = num1 + num2
     return "La suma de {} y {} es: {}".format(num1, num2, resultado)
 
-def es_palindromo(palabra):
-    palabra = palabra.lower()
-    return palabra == palabra[::-1]
+def es_palindromo(cadena):
+    #cadena = ''.join(caracter.lower() for caracter in cadena if caracter.isalnum())
+    cadena = cadena.lower().replace(" ","")
+    return cadena == cadena[::-1].lower().replace(" ","")
 
 #El que va adespachar el resultado del endpoit
 dispatcher = SoapDispatcher(
@@ -41,7 +42,7 @@ dispatcher.register_function(
     "EsPalindromo",
     es_palindromo,
     returns={"esPalindromo": bool},
-    args={"palabra": str},
+    args={"cadena": str},
 )
 
 
