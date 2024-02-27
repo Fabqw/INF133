@@ -24,5 +24,5 @@ dispatcher.register_function(
 
 server = HTTPServer(("0.0.0.0",8000),SOAPHandler)
 server.dispatcher = dispatcher
-print("SErvidor SOAP iniciando en http://localhost:8000/")
+print("Servidor SOAP iniciando en http://localhost:8000/")
 server.serve_forever()

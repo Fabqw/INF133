@@ -23,7 +23,7 @@ def run_server(port = 8000):
     try:
         server_address = ('', port)
         httpd = HTTPServer(server_address, RESTRequestHandler)
-        print(f'Iniciando el servidor web en http://localhost:{port}')
+        print(f'Iniciando el servidor web REST en http://localhost:{port}')
         httpd.serve_forever()
     except KeyboardInterrupt:
         print("Apagando servidor")
