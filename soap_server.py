@@ -23,7 +23,7 @@ dispatcher.register_function(
     "Sumar",
     sumar,
     returns={"resultado": str},
-    args={"num1": float, "num2": float},
+    args={"num1": int, "num2": int},
 )
 
 dispatcher.register_function(
