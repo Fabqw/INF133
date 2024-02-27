@@ -3,10 +3,10 @@ import json
 
 estudiantes = [
     {
-        "id" : 1,
-        "nombre" : "Fabricio",
-        "apellido" : "Quispe",
-        "carrera" : "Ingenierira de sistemas",
+        "id": 1,
+        "nombre": "Fabricio",
+        "apellido": "Quispe",
+        "carrera": "Ingeniería de Sistemas",
     },
 ]
 
@@ -17,16 +17,20 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
             self.send_header('Content-type', 'application/json')
             self.end_headers()
             self.wfile.write(json.dumps(estudiantes).encode('utf-8'))
-
-
+        else:
+            self.send_response(404)
+            self.send_header('Content-type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json.dumps({"Error": "Ruta no existente"}).encode('utf-8'))
+            
 def run_server(port = 8000):
     try:
         server_address = ('', port)
         httpd = HTTPServer(server_address, RESTRequestHandler)
-        print(f'Iniciando el servidor web REST en http://localhost:{port}')
+        print(f'Iniciando servidor web en http://localhost:{port}/')
         httpd.serve_forever()
     except KeyboardInterrupt:
-        print("Apagando servidor")
+        print('Apagando servidor web')
         httpd.socket.close()
 
 if __name__ == "__main__":
