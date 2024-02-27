@@ -7,7 +7,7 @@ client = Client(
 # peticion o requests
 result = client.service.Saludar("Fabricio")
 result2 = client.service.Sumar(1,2)
-result3 = client.service.EsPalindromo('a man a plan a canal Panama')
+result3 = client.service.EsPalindromo('A luna ese anula')
 print(result)
 print(result2)
 print(result3)
