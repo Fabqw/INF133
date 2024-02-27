@@ -20,6 +20,12 @@ estudiantes = [
         "apellido": "Lima",
         "carrera": "Ingeniería de software",
     },
+    {
+        "id": 4,
+        "nombre": "Carla",
+        "apellido": "Loza",
+        "carrera": "Ingeniería de software",
+    },
 ]
 
 class RESTRequestHandler(BaseHTTPRequestHandler):
@@ -41,7 +47,7 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
             carreras = [carrera['carrera'] for carrera in estudiantes]
             cnt_carreras = carreras.count('Ingeniería de software')            
-            self.wfile.write(json.dumps({"cnt carreras": cnt_carreras}).encode('utf-8'))
+            self.wfile.write(json.dumps({"alumnos de la carrera ing se soft": cnt_carreras}).encode('utf-8'))
         else:
             self.send_response(404)
             self.send_header('Content-type', 'application/json')
