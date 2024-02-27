@@ -25,6 +25,13 @@ dispatcher.register_function(
     args={"nombre": str},
 )
 
+dispatcher.register_function(
+    "Sumar",
+    SumaDosNumeros,
+    returns={"La suma es": int},
+    args={"primer numero": int, "segundo numero": int},
+)
+
 server = HTTPServer(("0.0.0.0",8000),SOAPHandler)
 server.dispatcher = dispatcher
 print("Servidor SOAP iniciando en http://localhost:8000/")
