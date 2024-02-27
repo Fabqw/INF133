@@ -37,6 +37,13 @@ dispatcher.register_function(
     args={"num1": int, "num2": int},
 )
 
+dispatcher.register_function(
+    "EsPalindromo",
+    es_palindromo,
+    returns={"esPalindromo": bool},
+    args={"palabra": str},
+)
+
 
 server = HTTPServer(("0.0.0.0",8000),SOAPHandler)
 server.dispatcher = dispatcher
