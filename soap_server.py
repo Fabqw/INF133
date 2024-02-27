@@ -5,6 +5,9 @@ from pysimplesoap.server import SoapDispatcher, SOAPHandler
 def saludar(nombre):
     return "!Hola, {}¡".format(nombre)
 
+def SumaDosNumeros(num1, num2):
+    return num1+num2
+
 #El que va adespachar el resultado del endpoit
 dispatcher = SoapDispatcher(
     "ejemplo-soap-server",
