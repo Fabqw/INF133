@@ -12,7 +12,7 @@ response = requests.request(
 )
 #dif metodo de acceso, forma de acceder
 #SOAP protocololo
-#REST arquitectectura
+#REST arquitectectura, basada en HTTP
 
 print(response.text)
 
