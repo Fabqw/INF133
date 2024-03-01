@@ -29,7 +29,7 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
                 self.send_header("Content-type", "application/json")
                 self.end_headers()
                 self.wfile.write(json.dumps(estudiante).encode("utf-8"))
-        elif self.path.startswith("/estudiante/carreras"):
+        elif self.path.startswith("/carreras/"):
             self.send_response(200)
             self.send_header("Content-type", "application/json")
             self.end_headers()

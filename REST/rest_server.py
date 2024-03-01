@@ -35,7 +35,13 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
             self.send_header('Content-type', 'application/json')
             self.end_headers()
             self.wfile.write(json.dumps(estudiantes).encode('utf-8'))
-        elif self.path == '/buscar_nombre':
+        elif self.path == "/eliminar_estudiante":
+            self.send_response(201)
+            self.send_header("Content-type", "application/json")
+            self.end_headers()
+            estudiantes.clear()
+            self.wfile.write(json.dumps(estudiantes).encode("utf-8"))
+        elif self.path == '/nombresconP':
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
@@ -67,14 +73,43 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(json.dumps({"Error": "Ruta no existente"}).encode('utf-8'))
             
+    def do_POST(self):
+        if self.path == "/agrega_estudiante":
+            content_length = int(self.headers["Content-Length"])
+            post_data = self.rfile.read(content_length)
+            post_data = json.loads(post_data.decode("utf-8"))
+            post_data["id"] = len(estudiantes) + 1
+            estudiantes.append(post_data)
+            self.send_response(201)
+            self.send_header("Content-type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps(estudiantes).encode("utf-8"))
+        elif self.path == "/actualizar_estudiante":
+            content_length = int(self.headers["Content-Length"])
+            post_data = self.rfile.read(content_length)
+            post_data = json.loads(post_data.decode("utf-8"))
+            id = post_data["id"]
+            estudiante = next(
+                (estudiante for estudiante in estudiantes if estudiante["id"] == id),
+                None,
+            )
+            if estudiante:
+                estudiante.update(post_data)
+                self.send_response(201)
+                self.send_header("Content-type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps(estudiantes).encode("utf-8"))
+        else:
+            self.send_response(404)
+            self.send_header("Content-type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"Error": "Ruta no existente"}).encode("utf-8"))
+            
 def run_server(port = 8000):
     try:
         server_address = ('', port)
         httpd = HTTPServer(server_address, RESTRequestHandler)
         print(f'Iniciando servidor web en http://localhost:{port}/')
-        print(f'Ir a <a href="http://localhost:{port}/buscar_nombre">buscar_nombre</a>')
-        print(f'Ir a <a href="http://localhost:{port}/contar_carreras">contar_carreras</a>')
-        print(f'Ir a <a href="http://localhost:{port}/total_estudiantes">total_estudiantes</a>')
         httpd.serve_forever()
     except KeyboardInterrupt:
         print('Apagando servidor web')
