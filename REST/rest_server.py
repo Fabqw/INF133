@@ -41,7 +41,7 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
             estudiantes.clear()
             self.wfile.write(json.dumps(estudiantes).encode("utf-8"))
-        elif self.path == '/nombresconP':
+        elif self.path == '/buscar_nombre':
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
             self.end_headers()

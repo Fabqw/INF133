@@ -9,7 +9,7 @@ print(get_response.text)
 
 # GET consulta en la ruta /nombresconP
 
-ruta_get_nom = url + "nombresconP"
+ruta_get_nom = url + "buscar_nombre"
 get_response_nom = requests.request(method="GET", url=ruta_get_nom)
 print(get_response_nom.text)
 
