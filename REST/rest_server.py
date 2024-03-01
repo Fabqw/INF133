@@ -6,25 +6,25 @@ estudiantes = [
         "id": 1,
         "nombre": "Fabricio",
         "apellido": "Quispe",
-        "carrera": "Ingeniería de Sistemas",
+        "carrera": "Ingenieria de Sistemas",
     },
     {
         "id": 2,
         "nombre": "Pedro",
         "apellido": "Lima",
-        "carrera": "Ingeniería de software",
+        "carrera": "Ingenieria de software",
     },
     {
         "id": 3,
         "nombre": "Pepe",
         "apellido": "Lima",
-        "carrera": "Ingeniería de software",
+        "carrera": "Ingenieria de software",
     },
     {
         "id": 4,
         "nombre": "Carla",
         "apellido": "Loza",
-        "carrera": "Ingeniería de software",
+        "carrera": "Ingenieria de software",
     },
 ]
 
