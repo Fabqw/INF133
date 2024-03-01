@@ -33,7 +33,8 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-type", "application/json")
             self.end_headers()
-            self.wfile.write(json.dumps(estudiantes['carrera']).encode("utf-8"))
+            cnt_estudiantes = len(estudiantes)
+            self.wfile.write(json.dumps({"estudiantes totales": cnt_estudiantes}).encode('utf-8'))
 
 
         else:
