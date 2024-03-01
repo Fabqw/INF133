@@ -13,6 +13,18 @@ ruta_get_nom = url + "nombresconP"
 get_response_nom = requests.request(method="GET", url=ruta_get_nom)
 print(get_response_nom.text)
 
+# GET consulta a la ruta /contar_carreras
+
+ruta_get_carreras = url + "contar_carreras"
+ruta_get_carreras = requests.request(method="GET", url=ruta_get_carreras)
+print(ruta_get_carreras.text)
+
+# GET consulta en la ruta total_estudiantes
+
+ruta_get_total = url +"total_estudiantes"
+ruta_get_total = requests.request(method="GET", url=ruta_get_total)
+print(ruta_get_total.text)
+
 # # POST agrega un nuevo estudiante por la ruta /agrega_estudiante
 # ruta_post = url + "agrega_estudiante"
 # nuevo_estudiante = {
