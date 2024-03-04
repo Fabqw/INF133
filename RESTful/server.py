@@ -62,7 +62,7 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-type", "application/json")
             self.end_headers()
-            carrera_eco = list(set(estudiante["carrera"] for estudiante in estudiantes if estudiante['carrera'] == "Economia"))            
+            carrera_eco = list(estudiante for estudiante in estudiantes if estudiante['carrera'] == "Economia")            
             self.wfile.write(json.dumps({"estudiantes de econmia": carrera_eco}).encode('utf-8'))
         else:
             self.send_response(404)
