@@ -6,7 +6,7 @@ estudiantes = [
         "id": 1,
         "nombre": "Pedrito",
         "apellido": "García",
-        "carrera": "Ingeniería de Sistemas",
+        "carrera": "Ingenieria de Sistemas",
     },
     {
         "id": 2,
@@ -30,6 +30,12 @@ estudiantes = [
         "id": 5,
         "nombre": "Claudia",
         "apellido": "Flores",
+        "carrera": "Economia",
+    },
+    {
+        "id": 6,
+        "nombre": "Gabriela",
+        "apellido": "Benavidez",
         "carrera": "Economia",
     },
 ]
