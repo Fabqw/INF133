@@ -87,7 +87,17 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
             self.send_header("Content-type", "application/json")
             self.end_headers()
             self.wfile.write(json.dumps(estudiantes).encode("utf-8"))
-
+        elif self.path.startswith("/economia/"):
+            content_length = int(self.headers["Content-Length"])
+            post_data = self.rfile.read(content_length)
+            post_data = json.loads(post_data.decode("utf-8"))
+            post_data["id"] = len(estudiantes) + 1
+            post_data["carrera"] = "Economia"
+            estudiantes.append(post_data)
+            self.send_response(201)
+            self.send_header("Content-type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps(estudiantes).encode("utf-8"))
         else:
             self.send_response(404)
             self.send_header("Content-type", "application/json")
