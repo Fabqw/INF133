@@ -64,7 +64,7 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
             carreras = list(set(estudiante["carrera"] for estudiante in estudiantes))            
             self.wfile.write(json.dumps({"estudiantes totales": carreras}).encode('utf-8'))
-        elif self.path.startswith("/Economia/"):
+        elif self.path.startswith("/economia/"):
             self.send_response(200)
             self.send_header("Content-type", "application/json")
             self.end_headers()
