@@ -38,6 +38,12 @@ estudiantes = [
         "apellido": "Benavidez",
         "carrera": "Economia",
     },
+    {
+        "id": 7,
+        "nombre": "Gabriela",
+        "apellido": "Benavidez",
+        "carrera": "Medicina",
+    },
 ]
 
 class RESTRequestHandler(BaseHTTPRequestHandler):
