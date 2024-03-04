@@ -26,8 +26,13 @@ estudiantes = [
         "apellido": "Loza",
         "carrera": "Ingenieria de software",
     },
+    {
+        "id": 5,
+        "nombre": "Claudia",
+        "apellido": "Flores",
+        "carrera": "Economia",
+    },
 ]
-
 
 class RESTRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -53,6 +58,12 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
             carreras = list(set(estudiante["carrera"] for estudiante in estudiantes))            
             self.wfile.write(json.dumps({"estudiantes totales": carreras}).encode('utf-8'))
+        elif self.path.startswith("/Economia/"):
+            self.send_response(200)
+            self.send_header("Content-type", "application/json")
+            self.end_headers()
+            carrera_eco = list(set(estudiante["carrera"] for estudiante in estudiantes if estudiante['carrera'] == "Economia"))            
+            self.wfile.write(json.dumps({"estudiantes de econmia": carrera_eco}).encode('utf-8'))
         else:
             self.send_response(404)
             self.send_header("Content-type", "application/json")
