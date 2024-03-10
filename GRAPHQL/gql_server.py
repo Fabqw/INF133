@@ -11,6 +11,7 @@ class Estudiante(ObjectType):
 
 
 class Query(ObjectType):
+    
     estudiantes = List(Estudiante)
     estudiante = Field(Estudiante, id=Int())
 
@@ -25,7 +26,8 @@ class Query(ObjectType):
 
 estudiantes = [
     Estudiante(
-        id=1, nombre="Pedrito", 
+        id=1, 
+        nombre="Pedrito", 
         apellido="Garcia", 
         carrera="Ingenieria de sistemas"
     ),
@@ -33,7 +35,8 @@ estudiantes = [
         id=2, 
         nombre="Jose", 
         apellido="Lopez", 
-        carrera="Arquitectura"),
+        carrera="Arquitectura"
+    ),
 ]
 
 schema = Schema(query=Query)

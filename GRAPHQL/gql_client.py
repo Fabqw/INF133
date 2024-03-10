@@ -3,8 +3,13 @@ import requests
 # Definir la consulta GraphQL
 query = """
     {
-        estudiante(id: 1, nombre: "Jose"){
+        estudiantes{
+            id
             nombre
+        }
+        estudiante(id:2){
+            nombre
+            carrera
         }
     }
 """
