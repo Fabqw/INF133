@@ -1,16 +1,17 @@
 import requests
 
-# consulta Graphql
-
+# Definir la consulta GraphQL
 query = """
     {
-        estudiante(id:1, nombre:"jose"){
+        estudiante(id: 1, nombre: "Jose"){
             nombre
         }
     }
 """
-# server graphql
+
+# Definir la URL del servidor GraphQL
 url = 'http://localhost:8000/graphql'
 
-response = requests.post(url, json={'query':query})
+# Solicitud POST al servidor GraphQL
+response = requests.post(url, json={'query': query})
 print(response.text)
