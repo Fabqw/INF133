@@ -3,6 +3,7 @@ import requests
 # definir la consulat GRAPHQL
 query = """ 
     {
+        hello,
         goodbye
     }
 """
