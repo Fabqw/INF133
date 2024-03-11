@@ -64,16 +64,18 @@ class DeleteEstudiante(Mutation):
 class ActualizarEstudiante(Mutation):
     class Arguments:
         id = Int()
-    
-    estudiantes = Field(Estudiante)
-    
-    def mutate(root, info, id):
+        carrera = String()
+
+    estudiante = Field(Estudiante)
+
+    def mutate(root, info, id, carrera):
+        estudiantes = root.estudiantes
         for estudiante in estudiantes:
             if estudiante.id == id:
-                est = estudiantes.pop(id)
-                est.carrera = "antropologia"
-                estudiantes.append(est)
+                estudiante.carrera = carrera
                 return ActualizarEstudiante(estudiante=estudiante)
+        return None
+
 class Mutations(ObjectType):
     crear_estudiante = CrearEstudiante.Field()
     delete_estudiante = DeleteEstudiante.Field()

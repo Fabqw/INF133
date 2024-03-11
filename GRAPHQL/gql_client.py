@@ -48,9 +48,14 @@ mutation {
     }    
 """
 query_actualizar = """
-mutation{
-    actualizarEstudiante(id:2){
-        carera
+mutation {
+    actualizarEstudiante(id:2, carrera:"Derecho") {
+        estudiante {
+            id
+            nombre
+            apellido
+            carrera
+        }
     }
 }
 """
