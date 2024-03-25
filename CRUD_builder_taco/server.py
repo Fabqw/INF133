@@ -68,26 +68,39 @@ class TacoService:
     def read_taco(self):
         return {index: taco.__dict__ for index, taco in tacos.items()}
 
+    # def update_taco(self, index, post_data):
+    #     if index in tacos:
+    #         taco = tacos[index]
+    #         base = post_data.get("base", None)
+    #         guiso = post_data.get("guiso", None)
+    #         toppings = post_data.get("toppings", [])
+    #         salsa = post_data.get("salsa", None)
+
+    #         if base:
+    #             taco.base = base
+    #         if guiso:
+    #             taco.guiso = guiso
+    #         if toppings:
+    #             taco.toppings = toppings
+    #         if salsa:
+    #             taco.salsa = salsa
+
+    #         return taco
+    #     else:
+    #         return None
+    
     def update_taco(self, index, post_data):
-        if index in tacos:
-            taco = tacos[index]
-            base = post_data.get("base", None)
-            guiso = post_data.get("guiso", None)
-            toppings = post_data.get("toppings", [])
-            salsa = post_data.get("salsa", None)
-
-            if base:
-                taco.base = base
-            if guiso:
-                taco.guiso = guiso
-            if toppings:
-                taco.toppings = toppings
-            if salsa:
-                taco.salsa = salsa
-
-            return taco
-        else:
+        if index not in tacos:
             return None
+
+        taco = tacos[index]
+        taco.base = post_data.get("base", taco.base)
+        taco.guiso = post_data.get("guiso", taco.guiso)
+        taco.toppings = post_data.get("toppings", taco.toppings)
+        taco.salsa = post_data.get("salsa", taco.salsa)
+
+        return taco
+
 
     def delete_taco(self, index):
         if index in tacos:
@@ -166,8 +179,12 @@ def run(server_class=HTTPServer, handler_class=TacoHandler, port=8000):
     server_address = ("", port)
     httpd = server_class(server_address, handler_class)
     print(f"Iniciando servidor HTTP en puerto {port}...")
-    httpd.serve_forever()
-
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        print("\nDeteniendo el servidor HTTP...")
+        httpd.server_close()
+        print("Servidor detenido correctamente.")
 
 if __name__ == "__main__":
     run()
