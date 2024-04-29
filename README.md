@@ -6,6 +6,10 @@
 ### Prácticas
 -   servidor SOAP
 -   servidor REST
+-   servidor RESTful
+-   servidor GRAPHQL
+-   servidor CRUD
+-   servidor MVC
 
 ### Codigos importantes
 -   .\venv\Scripts\activate (Activar el entrono virtual)
