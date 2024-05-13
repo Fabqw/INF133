@@ -6,43 +6,43 @@ BASE_URL = "http://localhost:5000/api"
 # Definir los encabezados de la solicitud
 headers = {"Content-Type": "application/json"}
 
-# Crear un nuevo animal
-url = f"{BASE_URL}/animals"
-nuevo_animal = {"name": "León", "species": "Felino", "age": 5}
-response = requests.post(url, json=nuevo_animal, headers=headers)
-print("Creando un nuevo animal:")
+# Crear un nuevo libro
+url = f"{BASE_URL}/libros"
+nuevo_libro = {"titulo": "The Lord of the rings", "autor": "Tolkien", "edicion": "2da edicion", "disponibilidad":"Media"}
+response = requests.post(url, json=nuevo_libro, headers=headers)
+print("Creando un nuevo libro:")
 print(response.json())
 
-# Crear el segundo animal
-animal_2 = {"name": "Cocodrilo", "species": "Reptil", "age": 8}
-response = requests.post(url, json=animal_2, headers=headers)
-print("\nCreando el segundo animal:")
+# Crear el segundo libro
+libro_2 = {"titulo": "Game of thrones", "autor": "George R.R. Martin", "edicion": "3ra edicion", "disponibilidad":"Alta"}
+response = requests.post(url, json=libro_2, headers=headers)
+print("\nCreando el segundo libro:")
 print(response.json())
 
-# Obtener la lista de todos los animales
-url = f"{BASE_URL}/animals"
+# Obtener la lista de todos los libros
+url = f"{BASE_URL}/libros"
 response = requests.get(url, headers=headers)
-print("\nLista de animales:")
+print("\nLista de libros:")
 print(response.json())
 
-# Obtener un animal específico por su ID (por ejemplo, ID=1)
-url = f"{BASE_URL}/animals/1"
+# Obtener un libro específico por su ID (por ejemplo, ID=1)
+url = f"{BASE_URL}/libros/1"
 response = requests.get(url, headers=headers)
-print("\nDetalles del animal con ID 1:")
+print("\nDetalles del libro con ID 1:")
 print(response.json())
 
-# Actualizar un animal existente por su ID (por ejemplo, ID=1)
-url = f"{BASE_URL}/animals/1"
-datos_actualizacion = {"name": "Tigre", "species": "Felino", "age": 4}
+# Actualizar un libro existente por su ID (por ejemplo, ID=1)
+url = f"{BASE_URL}/libros/2"
+datos_actualizacion = {"titulo": "Game of thrones", "autor": "George R.R. Martin", "edicion": "1ra edicion", "disponibilidad":"Baja"}
 response = requests.put(url, json=datos_actualizacion, headers=headers)
-print("\nActualizando el animal con ID 1:")
+print("\nActualizando el libro con ID 2:")
 print(response.json())
 
-# Eliminar un animal existente por su ID (por ejemplo, ID=1)
-url = f"{BASE_URL}/animals/1"
+# Eliminar un libro existente por su ID (por ejemplo, ID=1)
+url = f"{BASE_URL}/libros/1"
 response = requests.delete(url, headers=headers)
-print("\nEliminando el animal con ID 1:")
+print("\nEliminando el libro con ID 1:")
 if response.status_code == 204:
-    print(f"Animal con ID 1 eliminado con éxito.")
+    print(f"libro con ID 1 eliminado con éxito.")
 else:
     print(f"Error: {response.status_code} - {response.text}")

@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from MVC_api_libro.app.models.libro_model import Libro
-from MVC_api_libro.app.views.libro_view import render_libro_list, render_libro_detail
+from models.libro_model import Libro
+from views.libro_view import render_libro_list, render_libro_detail
 
 # Crear un blueprint para el controlador de libros
 libro_bp = Blueprint("libro", __name__)
@@ -19,7 +19,7 @@ def get_libro(id):
     libro = Libro.get_by_id(id)
     if libro:
         return jsonify(render_libro_detail(libro))
-    return jsonify({"error": "Animal no encontrado"}), 404
+    return jsonify({"error": "Libro no encontrado"}), 404
 
 
 # Ruta para crear un nuevo libro
@@ -32,8 +32,9 @@ def create_animal():
     disponibilidad = data.get("disponibilidad")
 
     # Validación simple de datos de entrada
-    if not titulo or not autor or edicion or disponibilidad is None:
+    if not (titulo and autor and edicion and disponibilidad is not None):
         return jsonify({"error": "Faltan datos requeridos"}), 400
+
 
     # Crear un nuevo libro y guardarlo en la base de datos
     libro = Libro(titulo=titulo, autor=autor, edicion=edicion,  disponibilidad=disponibilidad)

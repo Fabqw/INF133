@@ -1,21 +1,23 @@
-def render_animal_list(animals):
-    # Representa una lista de animales como una lista de diccionarios
+def render_libro_list(libros):
+    # Representa una lista de libros como una lista de diccionarios
     return [
         {
-            "id": animal.id,
-            "name": animal.name,
-            "species": animal.species,
-            "age": animal.age,
+            "id": libro.id,
+            "titulo": libro.titulo,
+            "autor": libro.autor,
+            "edicion": libro.edicion,
+            "disponibilidad": libro.disponibilidad,
         }
-        for animal in animals
+        for libro in libros
     ]
 
 
-def render_animal_detail(animal):
-    # Representa los detalles de un animal como un diccionario
+def render_libro_detail(libro):
+    # Representa los detalles de un libro como un diccionario
     return {
-        "id": animal.id,
-        "name": animal.name,
-        "species": animal.species,
-        "age": animal.age,
+        "id": libro.id,
+        "titulo": libro.titulo,
+        "autor": libro.autor,
+        "edicion": libro.edicion,
+        "disponibilidad": libro.disponibilidad,
     }
