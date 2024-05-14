@@ -39,13 +39,14 @@ def create_user():
         first_name = request.form["first_name"]
         last_name = request.form["last_name"]
         username = request.form["username"]
+        rol = request.form["rol"]
         password = request.form["password"]
         existing_user = User.query.filter_by(username=username).first()
         if existing_user:
             flash("El nombre de usuario ya está en uso", "error")
             return redirect(url_for("user.create_user"))
         # Creamos un nuevo usuario
-        user = User(first_name, last_name, username,password)
+        user = User(first_name, last_name, username, rol, password)
         user.set_password(password)
         # Guardamos el usuario
         user.save()

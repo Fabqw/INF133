@@ -11,6 +11,7 @@
                         <div class="content">
                             <p><strong>Nombre: {{ user.first_name }} </strong></p>
                             <p><strong>Apellido: {{ user.last_name }}</strong></p>
+                            <p><strong>Rol: {{ user.rol }}</strong></p>
                             <div class="buttons">
                                 <a href="{{ url_for('user.update_user', id=user.id) }}" 
                                 class="button is-info">Editar</a>
@@ -24,7 +25,7 @@
         {% endfor %}
     </div>
     <div class="buttons">
-        <a href="/" class="button is-info">LOGOUT</a>
+        <a href="{{url_for('user.logout')}}" class="button is-info">LOGOUT</a>
     </div>
 
 {% endblock %}
