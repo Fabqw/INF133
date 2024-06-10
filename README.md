@@ -40,5 +40,16 @@ API RESTful
 -   uso de sustantivos en end points y nombres en plural
 -   diseño de URL con patrones logicos
 
+## Despliegue
+- mandar una solucion a un entorno
+- se lo realizo en digitalocean
+1. fases de despliegue: 
+    - preparacion
+    - implementacion
+    - pruebas
+    - monitore
+    - mantenimiento
+
+
 
 
